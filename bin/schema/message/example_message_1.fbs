@@ -1,0 +1,11 @@
+// Example IDL for message
+// namespace is required:
+// your table should have the same name as your .fbs file
+
+namespace quick_pack.message;
+
+table example_message_1{
+  field0:ushort;
+  field1:ulong;
+}
+root_type example_message_1;

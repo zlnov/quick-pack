@@ -1,0 +1,20 @@
+// Example IDL file for our monster's schema.
+
+<% user_fbs.each do |schema| %>
+<%=%Q|include "#{schema}.fbs";\n| %>
+<% end %>
+
+namespace quick_pack.transmission;
+
+union AnyMessageTable { <%=user_fbs.map{
+  |a|
+  "quick_pack.message."+a
+}.join(", ") %> }
+
+table Packet{
+  data:AnyMessageTable;
+  seq:ulong;
+
+}
+
+root_type Packet;
